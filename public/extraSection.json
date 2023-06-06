@@ -1,0 +1,31 @@
+{
+    "sectionTitle": "Achievements Gallery",
+    "description": "We take pride in celebrating the achievements of our talented athletes and teams. Browse through our gallery showcasing the remarkable milestones, triumphs, and unforgettable moments captured on the journey to success.",
+    "galleryImages": [
+      {
+        "image": "https://i.postimg.cc/gJdGKw0z/stock-photo-cheerful-cricketers-celebrating-their-victory-1236948163.jpg",
+        "caption": "Team Championship Win",
+        "date": "May 2023"
+      },
+      {
+        "image": "https://i.postimg.cc/3wjTWKFP/Money-1.jpg",
+        "caption": "Player of the Tournament",
+        "date": "July 2022"
+      },
+      {
+        "image": "https://i.postimg.cc/WbDcgm7m/carlosyulo-2022-06-18-09-23-31.jpg",
+        "caption": "Gold Medal at Regional Championships",
+        "date": "September 2021"
+      },
+      {
+        "image": "https://i.postimg.cc/zDc9zb1y/Chipcoge.jpg",
+        "caption": "Record-breaking Marathon Finish",
+        "date": "March 2023"
+      }
+    ],
+    "ctaButton": {
+      "text": "Join Our Winning Team",
+      "link": "https://example.com/contact"
+    }
+  }
+  
