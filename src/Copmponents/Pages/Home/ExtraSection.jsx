@@ -16,7 +16,7 @@ const ExtraSection = () => {
             <div className='grid grid-cols-4 gap-7'>
                 {
                     gallary?.map((d, index) => <div key={index} className="card w-72 h-96 bg-base-100 shadow-xl">
-                        <figure><img className='w-[270px] h-[230px]' src={d.image} alt="Shoes" /></figure>
+                        <figure><img className='w-[270px] h-[230px] rounded-3xl' src={d.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{d.caption}</h2>
                             <p>Students: {d.date}</p>

@@ -13,9 +13,22 @@ const Login = () => {
 
     const googleLogIn = () => {
         googleSignUp()
-        .then(result => {
-            const user = result
-            navigate(from, { replace: true })
+            .then(result => {
+                const user = result.user;
+
+                const saveUser = {name: user.displayName, email: user.email}
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => {
                 const errors = error.message

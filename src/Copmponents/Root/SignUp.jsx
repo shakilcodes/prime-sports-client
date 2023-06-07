@@ -7,10 +7,10 @@ import { AuthContext } from '../AuthPorvider/AuthPorvider';
 
 const SignUp = () => {
     // useTitle('SignUp')
-    const [error, setError]= useState('')
-    
-    const {signUp} = useContext(AuthContext)
-    const navigate  = useNavigate()
+    const [error, setError] = useState('')
+
+    const { signUp } = useContext(AuthContext)
+    const navigate = useNavigate()
     const hanleSignUp = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -19,14 +19,14 @@ const SignUp = () => {
         const confirmpassword = form.confirmpassword.value
         const name = form.name.value
         const photo = form.photo.value
-        if(password !== confirmpassword){
+        if (password !== confirmpassword) {
             return alert('password is not match')
         }
-        console.log(password,confirmpassword)
+        console.log(password, confirmpassword)
 
-        signUp(email, password).then(result=>{
+        signUp(email, password).then(result => {
             const user = result.user;
-            
+
             updateName(name, photo, user)
             console.log(user)
             setError("")
@@ -39,27 +39,41 @@ const SignUp = () => {
             console.log(error.message)
             const gotedError = error.message;
             setError(gotedError)
-            
+
         })
     }
     console.log(error)
-    const updateName = (name, photo, user) =>{
+    const updateName = (name, photo, user) => {
         updateProfile(user, {
             displayName: name, photoURL: photo
         })
-        .then((result)=>{
-            console.log(result)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
+            .then((result) => {
+                const usersInfo = { name, email: user.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(usersInfo)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.insertedId){
+                        alert('succesfully user added')
+                    }
+                })
+                console.log(result)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
     return (
         <div>
             <h1 className='text-7xl mt-10 text-center font-bold '>SignUp Please</h1>
 
             <form onSubmit={hanleSignUp}>
-                
+
                 <div className="hero pt-10">
                     <div className="hero-content w-96 flex-col">
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
@@ -89,7 +103,7 @@ const SignUp = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input type="password" placeholder="password" name='password' className="input input-bordered" required />
-                                   
+
                                 </div>
                                 <div className="form-control">
                                     <label className="label">

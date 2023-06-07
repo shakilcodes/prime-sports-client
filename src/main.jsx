@@ -25,6 +25,7 @@ import Classes from './Copmponents/Pages/Classes/Classes.jsx';
 import Deshboard from './Copmponents/Deshboard/Deshboard'
 import MySelected from './Copmponents/Deshboard/MySelected/MySelected'
 import PrivetRoute from './Copmponents/PrivetRoute/PrivetRoute'
+import AllUsers from './Copmponents/Deshboard/AllUsers/AllUsers'
 
 
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: '/deshboard/myselected',
         element: <MySelected></MySelected>
+      },
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>
       }
     ]
 
