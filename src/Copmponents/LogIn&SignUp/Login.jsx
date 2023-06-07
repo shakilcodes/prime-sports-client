@@ -49,12 +49,12 @@ const Login = () => {
 
     return (
         <div>
-            <h1 className='text-7xl text-center mt-10 text-orange-500 font-bold'>Please Login</h1>
+            <h1 className='text-7xl text-center mt-10  font-bold'>Please Login</h1>
 
             <form onSubmit={handleLogin}>
                 <div className="hero pt-10">
                     <div className="hero-content w-96 flex-col">
-                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-300">
+                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                             <div className="card-body h-[450px]">
                                 <h1 className='text-red-500'>{error}</h1>
                                 <div className="form-control">
@@ -74,7 +74,7 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn bg-orange-500">Login</button>
+                                    <button className="btn bg-primary text-white">Login</button>
                                     <label className="label">
                                         <a href="/signUp" className="label-text-alt link link-hover">First time this website? <span className='text-primary'>SignUp</span></a>
                                     </label>
@@ -86,7 +86,7 @@ const Login = () => {
             </form>
             <div className=''>
                 <div className='text-center mt-5 text-white font-bold'>
-                    <button onClick={googleLogIn} className='mx-auto bg-orange-400 p-4 px-10 rounded-md'>Login with Google</button>
+                    <button onClick={googleLogIn} className='mx-auto bg-primary p-4 px-10 rounded-md'>Login with Google</button>
                 </div>
 
             </div>

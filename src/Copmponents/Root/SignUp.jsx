@@ -56,13 +56,13 @@ const SignUp = () => {
     }
     return (
         <div>
-            <h1 className='text-7xl mt-10 text-center font-bold text-orange-500'>SignUp Please</h1>
+            <h1 className='text-7xl mt-10 text-center font-bold '>SignUp Please</h1>
 
             <form onSubmit={hanleSignUp}>
                 
                 <div className="hero pt-10">
                     <div className="hero-content w-96 flex-col">
-                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-orange-300">
+                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                             <div className="card-body">
                                 <h1 className='text-red-500'>{error}</h1>
                                 <div className="form-control">
@@ -101,7 +101,7 @@ const SignUp = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn bg-orange-500">SignUp</button>
+                                    <button className="btn bg-primary text-white">SignUp</button>
                                     <label className="label">
                                         <a href="/login" className="label-text-alt link link-hover">Already have account? <span className='text-primary'>Login</span></a>
                                     </label>
