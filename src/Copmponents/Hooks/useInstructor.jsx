@@ -2,19 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../AuthPorvider/AuthPorvider";
 
-const useSingleInstuctor = () => {
+const useInstructor = () => {
     const {user, loading} = useContext(AuthContext)
     const token = localStorage.getItem('token')
-    const { refetch, data = [] } = useQuery({
-        queryKey: ['singleInsructor', user?.email],
+    const { refetch, isLoading, data: isInstructor = [] } = useQuery({
+        queryKey: ['instructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/singleInsructor?email=${user?.email}`,{headers: {
+            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`,{headers: {
                 authorization: `bearer ${token}`
             }})
             return res.json();
         },
     })
-    return [data, refetch]
+    return [isInstructor, refetch, isLoading]
 }
-export default useSingleInstuctor;
+export default useInstructor;

@@ -32,6 +32,10 @@ const AuthProvider = ({children}) => {
         setLoading(true)
        return signInWithPopup(auth, provider)
     }
+    const logOut = () =>{
+        setLoading(true)
+       return signOut(auth)
+    }
 
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth, usergot =>{
@@ -42,23 +46,20 @@ const AuthProvider = ({children}) => {
                 axios.post(`http://localhost:5000/jwt`, {email: usergot.email})
                 .then(data => {
                     localStorage.setItem('token', data.data.token)
+                    setLoading(false)
                 })
             }
             else{
                 localStorage.removeItem('token')
             }
 
-            setLoading(false)
         })
         return ()=>{
             unsubsribe();
         }
     },[])
 
-    const logOut = () =>{
-        setLoading(true)
-       return signOut(auth)
-    }
+    
     const userInfo = {
         signUp,
         logIn,

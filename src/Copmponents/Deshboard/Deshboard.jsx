@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../Hooks/useAdmin';
+import useInstructor from '../Hooks/useInstructor';
 
 const Deshboard = () => {
     // TODO
-    const isAdmin = true;
+    const [isAdmin] = useAdmin()
+    const admin = isAdmin.admin;
+    const [isInstructor] = useInstructor()
+    const instructor = isInstructor.admin;
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -17,20 +22,33 @@ const Deshboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content ">
-                        {/* Sidebar content here */}
                         {
-                            isAdmin ?
-                                <><div className='text-2xl font-semibold text-center'>
-                                   <li><Link>Admin</Link></li>
-                                    <li><Link to="/deshboard/allUsers">All Users</Link></li>
-                                    <li><Link>All Classes</Link></li>
-                                </div></> :
-                                <><div className='text-2xl font-semibold text-center'>
-                                    <h1>Students</h1>
-                                    <li><Link to="/deshboard/myselected">My Selected Classes</Link></li>
-                                    <li><Link>My Enrolled Classes</Link></li>
+                            instructor ?
+                                <>
+                                    <div className='text-2xl font-semibold text-center'>
+                                        <li>Instructor</li>
+                                        <li><Link to="/deshboard/addAClass">Add a Class</Link></li>
+                                        <li><Link to='/deshboard/myclasses'>My Classes</Link></li>
+                                    </div>
+                                </> :
+                                <><div>
+                                    {
+                                        admin ?
+                                            <><div className='text-2xl font-semibold text-center'>
+                                                <li>Admin</li>
+                                                <li><Link>Manage Classes</Link></li>
+                                                <li><Link to="/deshboard/allUsers">Manage Users</Link></li>
+                                                
+                                            </div></> :
+                                            <><div className='text-2xl font-semibold text-center'>
+                                                <h1>Students</h1>
+                                                <li><Link to="/deshboard/myselected">My Selected Classes</Link></li>
+                                                <li><Link>My Enrolled Classes</Link></li>
+                                            </div></>
+                                    }
                                 </div></>
                         }
+
                         <h1 className='border border-gray-400 border-bottom-[5px]'></h1>
                         <div className='text-xl text-center mt-10 font-semibold'>
                             <p><Link to='/'>Home</Link></p>

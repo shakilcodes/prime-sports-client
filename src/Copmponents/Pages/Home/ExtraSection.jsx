@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useClasses from '../../Hooks/useClasses';
+import useInstructor from '../../Hooks/useInstructor';
 import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 
 const ExtraSection = () => {
-    const [data] = useSingleInstuctor()
-    console.log(data)
+    // const [isInstructor] = useInstructor()
+    // console.log(isInstructor)
     // const [data] = useClasses()
     const [achivment, setachivment] = useState([])
     const gallary = achivment.galleryImages

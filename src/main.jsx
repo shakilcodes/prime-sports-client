@@ -26,6 +26,9 @@ import Deshboard from './Copmponents/Deshboard/Deshboard'
 import MySelected from './Copmponents/Deshboard/MySelected/MySelected'
 import PrivetRoute from './Copmponents/PrivetRoute/PrivetRoute'
 import AllUsers from './Copmponents/Deshboard/AllUsers/AllUsers'
+import AdminRoute from './Copmponents/AdminRoute'
+import AddAClass from './Copmponents/Deshboard/Instructor/AddAClass'
+import MyClasses from './Copmponents/Deshboard/Instructor/MyClasses'
 
 
 
@@ -67,7 +70,15 @@ const router = createBrowserRouter([
       },
       {
         path: 'allUsers',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute> <AllUsers></AllUsers></AdminRoute>
+      }, 
+      {
+        path: 'addAClass',
+        element: <AddAClass></AddAClass>
+      },
+      {
+        path: 'myclasses',
+        element: <MyClasses></MyClasses>
       }
     ]
 
