@@ -20,9 +20,9 @@ const AddAClass = () => {
         const email = user?.email
         const image = form.image.files[0];
         const status = 'pending'
-        const inputValues = { image, title, AvailableSeats, price, instructorName, email, status }
-        console.log(inputValues)
         
+        const inputValues = { title, AvailableSeats, price, instructorName, email, status }
+
         const imgHostingULR = `https://api.imgbb.com/1/upload?key=${imgeAPI}`
         const formData = new FormData()
         formData.append('image', image)
@@ -30,28 +30,33 @@ const AddAClass = () => {
             method: 'POST',
             body: formData,
         }).then(res => res.json()).then(imageData => {
-            console.log(imageData.data.display_url)
+            const imageFromBB = imageData.data.display_url;
+           const {title, AvailableSeats, price, instructorName, email, status} = inputValues;
+           const newInputValue = {title, AvailableSeats, price, instructorName, email, status, image: imageFromBB}
+            fetch('http://localhost:5000/addAClass',{
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newInputValue)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data._id)
+            if(data.insertedId){
+               alert ('successfully added new a class')
+            }
+            navigate('/')
+        })
         })
         .catch(err => {
             console.log(err)
         })
+        
+        
 
-
-        // fetch('http://localhost:5000/addAClass',{
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type' : 'application/json'
-        //     },
-        //     body: JSON.stringify(inputValues)
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data._id)
-        //     if(data.insertedId){
-        //        alert ('successfully added new a class')
-        //     }
-        //     navigate('/')
-        // })
+        
+        
     }
 
 

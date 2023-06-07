@@ -3,7 +3,9 @@ import useClasses from '../../Hooks/useClasses';
 
 const PopularClass = () => {
     const [data] = useClasses()
-    const popular = data;
+    const slice = true;
+    const popular = slice ? data.slice(0, 6) : data;
+
     return (
         <div>
             <h1 className='text-5xl text-center my-10 font-bold'>Popular Classes</h1>
