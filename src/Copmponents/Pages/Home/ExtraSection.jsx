@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import useClasses from '../../Hooks/useClasses';
 
 const ExtraSection = () => {
+    const [data] = useClasses()
     const [achivment, setachivment] = useState([])
     const gallary = achivment.galleryImages
     useEffect(() => {

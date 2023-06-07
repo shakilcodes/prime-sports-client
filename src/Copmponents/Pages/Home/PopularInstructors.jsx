@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import useClasses from '../../Hooks/useClasses';
 
 const PopularInstructors = () => {
-    const [popular, setPopular] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/classes')
-            .then(res => res.json())
-            .then(datas => setPopular(datas))
-    }, [])
+    const [data]= useClasses()
+    const popular = data;
     return (
         <div>
             <h1 className='text-5xl text-center my-10 font-bold'>Popular Instructors</h1>

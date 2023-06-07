@@ -1,7 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+// import App from './App.jsx'
 import './index.css'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 import {
   createBrowserRouter,
@@ -14,7 +22,12 @@ import AuthProvider from './Copmponents/AuthPorvider/AuthPorvider.jsx';
 import Instructors from './Copmponents/Pages/Instructors/Instructors.jsx';
 import Home from './Copmponents/Pages/Home/Home.jsx';
 import Classes from './Copmponents/Pages/Classes/Classes.jsx';
-import Deshboard from './Copmponents/Pages/Deshboard/Deshboard.jsx';
+import Deshboard from './Copmponents/Deshboard/Deshboard'
+import MySelected from './Copmponents/Deshboard/MySelected/MySelected'
+import PrivetRoute from './Copmponents/PrivetRoute/PrivetRoute'
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -45,12 +58,23 @@ const router = createBrowserRouter([
   },
   {
     path: 'deshboard',
-    element: <Deshboard></Deshboard>
+    element: <PrivetRoute><Deshboard></Deshboard></PrivetRoute>,
+    children: [
+      {
+        path: '/deshboard/myselected',
+        element: <MySelected></MySelected>
+      }
+    ]
+
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider><RouterProvider router={router} /></AuthProvider>
+    <AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+      </AuthProvider>
   </React.StrictMode>,
 )
