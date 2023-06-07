@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useClasses from '../../Hooks/useClasses';
+import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 
 const ExtraSection = () => {
-    const [data] = useClasses()
+    const [data] = useSingleInstuctor()
+    console.log(data)
+    // const [data] = useClasses()
     const [achivment, setachivment] = useState([])
     const gallary = achivment.galleryImages
     useEffect(() => {
@@ -20,13 +23,11 @@ const ExtraSection = () => {
                         <div className="card-body">
                             <h2 className="card-title">{d.caption}</h2>
                             <p>Students: {d.date}</p>
-                            
-                        
                         </div>
                     </div>)
                 }
             </div>
-            
+
         </div>
     );
 };

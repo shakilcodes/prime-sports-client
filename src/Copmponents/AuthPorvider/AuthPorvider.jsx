@@ -4,6 +4,7 @@ import { createContext } from 'react';
 import app from '../firebase.config';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
 // import { useContext } from 'react';
 
 
@@ -36,6 +37,17 @@ const AuthProvider = ({children}) => {
         const unsubsribe = onAuthStateChanged(auth, usergot =>{
             setUser(usergot)
             console.log(usergot)
+
+            if(usergot){
+                axios.post(`http://localhost:5000/jwt`, {email: usergot.email})
+                .then(data => {
+                    localStorage.setItem('token', data.data.token)
+                })
+            }
+            else{
+                localStorage.removeItem('token')
+            }
+
             setLoading(false)
         })
         return ()=>{
