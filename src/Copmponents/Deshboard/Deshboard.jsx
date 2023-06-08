@@ -43,7 +43,7 @@ const Deshboard = () => {
                                             <><div className='text-2xl font-semibold text-center'>
                                                 <h1>Students</h1>
                                                 <li><Link to="/deshboard/myselected">My Selected Classes</Link></li>
-                                                <li><Link>My Enrolled Classes</Link></li>
+                                                <li><Link to='/deshboard/myEnrolled'>My Enrolled Classes</Link></li>
                                             </div></>
                                     }
                                 </div></>

@@ -31,6 +31,7 @@ import AddAClass from './Copmponents/Deshboard/Instructor/AddAClass'
 import MyClasses from './Copmponents/Deshboard/Instructor/MyClasses'
 import ManageClasses from './Copmponents/Deshboard/ManageClasses/ManageClasses'
 import Payment from './Copmponents/Deshboard/Payment/Payment'
+import MyEnrolled from './Copmponents/Deshboard/MyEnrolled/MyEnrolled'
 
 
 
@@ -90,6 +91,11 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment></Payment>
+      },
+      {
+        path: 'myEnrolled',
+        element: <MyEnrolled></MyEnrolled>,
+        loader: ()=> fetch('http://localhost:5000/payments')
       }
     ]
 

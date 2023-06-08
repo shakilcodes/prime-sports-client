@@ -11,7 +11,8 @@ const Classes = () => {
     const approvedClasses = data.filter(d => d.status === 'Approved')
     const handleCart = item => {
         const {title, AvailableSeats, price, instructorName, email, image: imageFromBB} = item;
-        const addToCart = {title, AvailableSeats, price, instructorName, email, image: imageFromBB, userEmail: user?.email, userName: user?.displayName}
+        const status = "unpaid"
+        const addToCart = {title, AvailableSeats, price, instructorName, email, image: imageFromBB, userEmail: user?.email, userName: user?.displayName, status }
         
       fetch('http://localhost:5000/carts',{
         method: 'POST',

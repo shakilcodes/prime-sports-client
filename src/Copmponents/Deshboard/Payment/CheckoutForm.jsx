@@ -9,17 +9,23 @@ import './Payment.css'
 const CheckoutForm = () => {
 
     const [data, isLoading] = useCart()
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const { id } = useParams()
     const findedOne = data.find(d => d._id == id)
-    console.log(findedOne)
-
+    
     const stripe = useStripe();
     const element = useElements()
     const [cardError, setCardError] = useState('')
-
+    
     const [clientSecret, setClientSecret] = useState("");
     const [succeeded, setSuccseeded] = useState('')
+//     const [cartData, setCartData] = useState([])
+
+//    useEffect(()=>{
+//     fetch(`http://localhost:5000/carts/${user?.email}`)
+//     .then(res => res.json())
+//     .then(datas => setCartData(datas))
+//    },[])
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -32,7 +38,6 @@ const CheckoutForm = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data.clientSecret)
                 setClientSecret(data.clientSecret)
 
             })
@@ -64,36 +69,36 @@ const CheckoutForm = () => {
         }
 
 
-       const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
-        clientSecret,
-        {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: user?.displayName || 'unknown',
-                    email: user?.email || 'anonymous'
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: user?.displayName || 'unknown',
+                        email: user?.email || 'anonymous'
+                    }
                 }
             }
+        );
+        if (confirmError) {
+            console.log(confirmError)
         }
-       );
-       if(confirmError){
-        console.log(confirmError)
-       }
-       console.log('payment intent',paymentIntent)
-       if(paymentIntent.status === 'succeeded'){
-        const transactionsId = paymentIntent.id;
-        setSuccseeded(transactionsId)
+        console.log('payment intent', paymentIntent)
+        if (paymentIntent.status === 'succeeded') {
+            const transactionsId = paymentIntent.id;
+            setSuccseeded(transactionsId)
 
-        const payment = {
-            email: user?.email,
-             transactionsId,
-             image: findedOne.image, 
-             title: findedOne.title,
-             price: findedOne.price,
-             instructorName: findedOne.instructorName,
-             id: findedOne._id,
-             date: new Date(),
-             status: 'succeeded'
+            const payment = {
+                email: user?.email,
+                transactionsId,
+                image: findedOne.image,
+                title: findedOne.title,
+                price: findedOne.price,
+                instructorName: findedOne.instructorName,
+                id: findedOne._id,
+                date: new Date(),
+                status: 'succeeded'
             }
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
@@ -105,10 +110,24 @@ const CheckoutForm = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                  
-    
+
+
                 })
-       }
+
+            const shaki = 'shakil'
+
+            fetch(`http://localhost:5000/carts/updateSuccess/${findedOne._id}`, {
+                method: 'PATCH'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount) {
+                       
+                       
+                    }
+                })
+
+        }
     }
     return (
         <>
