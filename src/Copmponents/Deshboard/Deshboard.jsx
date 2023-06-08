@@ -36,9 +36,9 @@ const Deshboard = () => {
                                         admin ?
                                             <><div className='text-2xl font-semibold text-center'>
                                                 <li>Admin</li>
-                                                <li><Link>Manage Classes</Link></li>
+                                                <li><Link to='/deshboard/manageClasses'>Manage Classes</Link></li>
                                                 <li><Link to="/deshboard/allUsers">Manage Users</Link></li>
-                                                
+
                                             </div></> :
                                             <><div className='text-2xl font-semibold text-center'>
                                                 <h1>Students</h1>

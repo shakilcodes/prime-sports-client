@@ -3,10 +3,10 @@ import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 
 const MyClasses = () => {
     const [data] = useSingleInstuctor()
-    console.log(data)
+    // console.log(data)
     return (
         <div className='w-full'>
-            <h1 className='text-3xl font-bold my-7'>Total Users: {data.length}</h1>
+            <h1 className='text-3xl font-bold my-7'>Total Classes: {data.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
@@ -15,7 +15,7 @@ const MyClasses = () => {
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -24,8 +24,12 @@ const MyClasses = () => {
                                 <th>{index + 1}</th>
                                 <td>{d.title}</td>
                                 <td>{d.email}</td>
-                                <button className='btn btn-sm'>Update</button>
-                                <button className='btn btn-sm'>Delete</button>
+                                <td>
+                                    <button className='btn btn-sm'> Students: 0</button>
+                                    <button className='btn btn-sm'>{d.status}</button>
+                                    <button className='btn btn-sm'>Update</button>
+                                </td>
+                                
                             </tr>)
                         }
 

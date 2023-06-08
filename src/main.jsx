@@ -29,6 +29,8 @@ import AllUsers from './Copmponents/Deshboard/AllUsers/AllUsers'
 import AdminRoute from './Copmponents/AdminRoute'
 import AddAClass from './Copmponents/Deshboard/Instructor/AddAClass'
 import MyClasses from './Copmponents/Deshboard/Instructor/MyClasses'
+import ManageClasses from './Copmponents/Deshboard/ManageClasses/ManageClasses'
+import Payment from './Copmponents/Deshboard/Payment/Payment'
 
 
 
@@ -71,7 +73,7 @@ const router = createBrowserRouter([
       {
         path: 'allUsers',
         element: <AdminRoute> <AllUsers></AllUsers></AdminRoute>
-      }, 
+      },
       {
         path: 'addAClass',
         element: <AddAClass></AddAClass>
@@ -79,6 +81,15 @@ const router = createBrowserRouter([
       {
         path: 'myclasses',
         element: <MyClasses></MyClasses>
+      }, 
+      {
+        path: 'manageClasses',
+        element: <ManageClasses></ManageClasses>,
+        
+      },
+      {
+        path: 'payment/:id',
+        element: <Payment></Payment>
       }
     ]
 
@@ -88,9 +99,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

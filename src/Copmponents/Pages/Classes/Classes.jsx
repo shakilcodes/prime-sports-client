@@ -6,18 +6,13 @@ import useClasses from '../../Hooks/useClasses';
 const Classes = () => {
   const navigate = useNavigate()
   const {user, loading} = useContext(AuthContext)
-  if(loading){
-    return 'Loaddiiiinngggg'
-  }
+ 
     const [data] = useClasses()
-    console.log(user)
+    const approvedClasses = data.filter(d => d.status === 'Approved')
     const handleCart = item => {
-        
         const {title, AvailableSeats, price, instructorName, email, image: imageFromBB} = item;
         const addToCart = {title, AvailableSeats, price, instructorName, email, image: imageFromBB, userEmail: user?.email, userName: user?.displayName}
-        console.log(addToCart)
-
-
+        
       fetch('http://localhost:5000/carts',{
         method: 'POST',
         headers: {
@@ -43,7 +38,7 @@ const Classes = () => {
         <div>
             <div className='mx-20'>
                 {
-                    data.map(i => <div key={i._id} className="card card-side bg-base-100 mb-5 shadow-xl">
+                    approvedClasses.map(i => <div key={i._id} className="card card-side bg-base-100 mb-5 shadow-xl">
                     <figure><img className='w-[400px] h-[300px]' src={i.image} alt="Movie"/></figure>
                     <div className="card-body">
                       <h2 className="card-title">{i.title}</h2>
