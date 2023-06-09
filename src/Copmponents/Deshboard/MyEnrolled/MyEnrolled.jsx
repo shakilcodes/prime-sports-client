@@ -1,16 +1,23 @@
 import React, { useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../AuthPorvider/AuthPorvider';
+import useMyErolled from '../../Hooks/useMyErolled';
 
 const MyEnrolled = () => {
-    const [datas, setDatas] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/payments')
-            .then(res => res.json())
-            .then(data => setDatas(data))
-    }, [])
+    // const {user} = useContext(AuthContext)
+    // const [datas, setDatas] = useState([])
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/payments/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => setDatas(data))
+    // }, [])
+    const [data] = useMyErolled()
+    const datas = data;
+    console.log(datas)
     return (
-        <div>
+        <div className='w-full'>
              <h1 className='text-3xl font-bold my-7'>My Erolled: {datas.length}</h1>
             <div>
                 <table className="table">

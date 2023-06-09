@@ -95,7 +95,7 @@ const router = createBrowserRouter([
       {
         path: 'myEnrolled',
         element: <MyEnrolled></MyEnrolled>,
-        loader: ()=> fetch('http://localhost:5000/payments')
+      
       }
     ]
 
