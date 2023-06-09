@@ -1,14 +1,22 @@
-import { useContext } from "react";
-import { AuthContext } from "../../AuthPorvider/AuthPorvider";
-import { useNavigate } from "react-router-dom";
-
+import React from 'react';
+import { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../AuthPorvider/AuthPorvider';
+import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 const imgeAPI = import.meta.env.VITE_IMAGE_API;
-const AddAClass = () => {
-    const { user, loading } = useContext(AuthContext)
-
+console.log(imgeAPI)
+const UpdateClass = () => {
+    const {user, loading} = useContext(AuthContext)
     if (loading) {
         return 'Loading............'
     }
+    const { id } = useParams()
+    const [data] = useSingleInstuctor()
+    const findedData = data.find(d => d._id == id)
+
+
+
+    
     const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -21,7 +29,8 @@ const AddAClass = () => {
         const image = form.image.files[0];
         const status = 'pending'
         
-        const inputValues = { title, AvailableSeats, price, instructorName, email, status }
+        const inputValues = { title, AvailableSeats, price, instructorName, email }
+        console.log(inputValues)
 
         const imgHostingULR = `https://api.imgbb.com/1/upload?key=${imgeAPI}`
         const formData = new FormData()
@@ -30,36 +39,39 @@ const AddAClass = () => {
             method: 'POST',
             body: formData,
         }).then(res => res.json()).then(imageData => {
-            const imageFromBB = imageData.data.display_url;
+            const imageFromBB = imageData?.data?.display_url;
            const {title, AvailableSeats, price, instructorName, email, status} = inputValues;
            const newInputValue = {title, AvailableSeats, price, instructorName, email, status, image: imageFromBB}
-            fetch('http://localhost:5000/addAClass',{
-            method: 'POST',
+           fetch(`http://localhost:5000/classesUpdate/${id}`, {
+            method: "PUT",
             headers: {
-                'content-type' : 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(newInputValue)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data._id)
-            if(data.insertedId){
-               alert ('successfully added new a class')
-            }
-            navigate('/')
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    alert('updated your class')
+                }
+            })
+        form.reset()
+        navigate('/')
+       
         })
         .catch(err => {
             console.log(err)
         })
-        
+
+
+       
         
 
         
         
     }
-
-
     return (
         <div className='w-full'>
             <div className=''>
@@ -68,7 +80,7 @@ const AddAClass = () => {
                     <div className=''>
                         <div className='flex'>
                             <label className='text-xl font-bold p-2'>Class name :</label>
-                            <input className='bg-gray-200 w-[600px] p-2 rounded-md ms-5' type="text" placeholder='Your Class name' name='ClassName' />
+                            <input defaultValue={findedData?.title} className='bg-gray-200 w-[600px] p-2 rounded-md ms-5' type="text" placeholder='Your Class name' name='ClassName' />
 
                         </div>
                         <div className="flex">
@@ -86,11 +98,11 @@ const AddAClass = () => {
                         </div>
                         <div className='flex'>
                             <label className='text-xl font-bold'>Available seats: </label>
-                            <input className='bg-gray-200 ms-2 w-[600px] p-2 rounded-md ' type="text" placeholder='Available seats' name='AvailableSeats' />
+                            <input defaultValue={findedData?.AvailableSeats} className='bg-gray-200 ms-2 w-[600px] p-2 rounded-md ' type="text" placeholder='Available seats' name='AvailableSeats' />
                         </div>
                         <div className='flex ps-2'>
                             <label className='text-xl font-bold p-2'>Price: </label>
-                            <input  className='bg-gray-200  w-[600px] p-2 rounded-md ms-20' type="text" placeholder='Price' name='Price' />
+                            <input defaultValue={findedData?.price} className='bg-gray-200  w-[600px] p-2 rounded-md ms-20' type="text" placeholder='Price' name='Price' />
                         </div>
                     </div>
                     <div className='text-center my-3'>
@@ -102,4 +114,4 @@ const AddAClass = () => {
     );
 };
 
-export default AddAClass;
+export default UpdateClass;

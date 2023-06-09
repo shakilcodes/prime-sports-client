@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 
 const MyClasses = () => {
     const [data] = useSingleInstuctor()
-    // console.log(data)
+    console.log(data)
     return (
         <div className='w-full'>
             <h1 className='text-3xl font-bold my-7'>Total Classes: {data.length}</h1>
@@ -24,12 +25,14 @@ const MyClasses = () => {
                                 <th>{index + 1}</th>
                                 <td>{d.title}</td>
                                 <td>{d.email}</td>
+                                <td> <p className=''> Students: 0</p></td>
                                 <td>
-                                    <button className='btn btn-sm'> Students: 0</button>
-                                    <button className='btn btn-sm'>{d.status}</button>
-                                    <button className='btn btn-sm'>Update</button>
+                                    <p className=''>{d.status}</p>
                                 </td>
-                                
+                                <td>
+                                    <Link to={`/deshboard/updateClass/${d._id}`} className='btn btn-sm'>Update</Link>
+                                </td>
+
                             </tr>)
                         }
 

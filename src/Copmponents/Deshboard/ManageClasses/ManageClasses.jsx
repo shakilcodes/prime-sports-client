@@ -42,7 +42,7 @@ const ManageClasses = () => {
                                 <td>{d.instructorName}</td>
                                 <td>{d.email}</td>
                                 <td>
-                                   <button className='btn btn-sm'>{d.status}</button>
+                                   <p className='btn btn-sm'>{d.status}</p>
                                    
                                    
                                 </td>

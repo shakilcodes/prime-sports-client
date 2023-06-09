@@ -32,6 +32,7 @@ import MyClasses from './Copmponents/Deshboard/Instructor/MyClasses'
 import ManageClasses from './Copmponents/Deshboard/ManageClasses/ManageClasses'
 import Payment from './Copmponents/Deshboard/Payment/Payment'
 import MyEnrolled from './Copmponents/Deshboard/MyEnrolled/MyEnrolled'
+import UpdateClass from './Copmponents/Deshboard/UpdateClass/UpdateClass'
 
 
 
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'classes',
-        element: <Classes></Classes>
+        element: <Classes></Classes>,
       }
     ]
   },
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
         path: 'myEnrolled',
         element: <MyEnrolled></MyEnrolled>,
       
+      },
+      {
+        path: 'updateClass/:id',
+        element: <UpdateClass></UpdateClass>
       }
     ]
 

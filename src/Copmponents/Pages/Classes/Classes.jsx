@@ -1,12 +1,17 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useClasses from '../../Hooks/useClasses';
+import useUsers from '../../Hooks/useUsers';
 const Classes = () => {
   const navigate = useNavigate()
   const {user, loading} = useContext(AuthContext)
- 
+        // const [got] = useUsers()
+        const userMB = useLoaderData()
+        console.log()
+      
     const [data] = useClasses()
     const approvedClasses = data.filter(d => d.status === 'Approved')
     const handleCart = item => {
@@ -47,7 +52,7 @@ const Classes = () => {
                       <p>Availabel Seat: {i.AvailableSeats}</p>
                       <p>Price: {i.price}</p>
                       <div className="card-actions justify-end">
-                        <button onClick={()=> handleCart(i)} className="btn btn-primary ">Select</button>
+                        <button disabled={false} onClick={()=> handleCart(i)} className="btn btn-primary ">Select</button>
                       </div>
                     </div>
                   </div>)

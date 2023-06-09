@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthPorvider/AuthPorvider";
 const useUsers = () => {
     const {loading} = useContext(AuthContext)
     const token = localStorage.getItem('token')
-    const { refetch, data = [] } = useQuery({
+    const { refetch, data: userMB = [] } = useQuery({
 
         queryKey: ['classes'],
         // enabled: !loading,
@@ -19,7 +19,7 @@ const useUsers = () => {
             return res.json();
         },
     })
-    return [data, refetch]
+    return [userMB, refetch]
 }
 export default useUsers;
 
