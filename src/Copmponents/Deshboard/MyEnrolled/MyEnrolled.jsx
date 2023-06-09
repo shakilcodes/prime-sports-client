@@ -6,13 +6,6 @@ import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useMyErolled from '../../Hooks/useMyErolled';
 
 const MyEnrolled = () => {
-    // const {user} = useContext(AuthContext)
-    // const [datas, setDatas] = useState([])
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/payments/${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setDatas(data))
-    // }, [])
     const [data] = useMyErolled()
     const datas = data;
     console.log(datas)

@@ -1,10 +1,28 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useClasses from '../../Hooks/useClasses';
+import useNumberStuden from '../../Hooks/useNumberStudent';
 import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 
 const MyClasses = () => {
     const [data] = useSingleInstuctor()
-    console.log(data)
+    const [totalData, setTotalData] = useState([])
+    const [allClass] = useClasses()
+    const allDAta = allClass.map(d => d.title)
+    console.log(allClass)
+    
+    const [students] = useNumberStuden()
+    // console.log(students)
+    for(const s of allClass){
+        const student = students.filter(d => d.title == s.title)
+        // const stu = student.map(d => console.log(d))
+        const a = student[0]
+        const b = student[1]
+        console.log(b)
+    }
+    
     return (
         <div className='w-full'>
             <h1 className='text-3xl font-bold my-7'>Total Classes: {data.length}</h1>
@@ -28,6 +46,7 @@ const MyClasses = () => {
                                 <td> <p className=''> Students: 0</p></td>
                                 <td>
                                     <p className=''>{d.status}</p>
+                                    <Link to={`/deshboard/InstructorfeedBack/${d._id}`}><p className='text-red-500'>{d.feedBack ? 'FeedBack' : ''}</p></Link>
                                 </td>
                                 <td>
                                     <Link to={`/deshboard/updateClass/${d._id}`} className='btn btn-sm'>Update</Link>
@@ -45,3 +64,8 @@ const MyClasses = () => {
 };
 
 export default MyClasses;
+
+
+
+
+

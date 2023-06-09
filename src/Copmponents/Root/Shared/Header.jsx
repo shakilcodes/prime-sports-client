@@ -2,12 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
+import Swal from 'sweetalert2';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
     const SignOutBtn = () => {
         logOut().then(result => {
             console.log(result)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Log Out Success',
+                showConfirmButton: false,
+                timer: 1500
+              })
+
         }).catch(error => {
             console.log(error)
         })

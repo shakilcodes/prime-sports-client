@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useClasses from '../../Hooks/useClasses';
 import useUsers from '../../Hooks/useUsers';
@@ -11,6 +12,7 @@ const Classes = () => {
         // const [got] = useUsers()
         const userMB = useLoaderData()
         console.log()
+        
       
     const [data] = useClasses()
     const approvedClasses = data.filter(d => d.status === 'Approved')
@@ -28,9 +30,28 @@ const Classes = () => {
     })
     .then(res => res.json())
     .then(data => {
+      if(!user){
+        return Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Log in First',
+          showConfirmButton: false,
+          timer: 1500
+          
+        }),
+        navigate('/login')
+        
+        
+      }
         console.log(data._id)
         if(data.insertedId){
-           alert ('successfully Add a Class')
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Added to Your Cart',
+            showConfirmButton: false,
+            timer: 1500
+          })
            navigate('/')
         }
     })

@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 const useClasses = () => {
-    const { refetch, data = [] } = useQuery({
+    const { refetch, data: allClass = [] } = useQuery({
         queryKey: ['classes'],
         // enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`https://prime-sports-server.vercel.app/classes`)
+            const res = await fetch(`http://localhost:5000/classes`)
             return res.json();
         },
     })
-    return [data, refetch]
+    return [allClass, refetch]
 }
 export default useClasses;
 

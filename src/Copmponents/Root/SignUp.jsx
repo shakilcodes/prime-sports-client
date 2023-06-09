@@ -2,6 +2,7 @@ import { updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthPorvider/AuthPorvider';
 
 
@@ -31,7 +32,13 @@ const SignUp = () => {
             console.log(user)
             setError("")
             event.target.reset();
-            alert('success')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Sign Up success',
+                showConfirmButton: false,
+                timer: 1500
+              })
             navigate('/')
             // console.log(loggedUser)
         }).catch(error => {
@@ -59,7 +66,13 @@ const SignUp = () => {
                 .then(res => res.json())
                 .then(data => {
                     if(data.insertedId){
-                        alert('succesfully user added')
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'user Added',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
                     }
                 })
                 console.log(result)
@@ -70,11 +83,11 @@ const SignUp = () => {
     }
     return (
         <div>
-            <h1 className='text-7xl mt-10 text-center font-bold '>SignUp Please</h1>
+            <h1 className='text-7xl mt-5 text-center font-bold '>SignUp Please</h1>
 
-            <form onSubmit={hanleSignUp}>
+            <form className='mt-5' onSubmit={hanleSignUp}>
 
-                <div className="hero pt-10">
+                <div className="hero">
                     <div className="hero-content w-96 flex-col">
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                             <div className="card-body">

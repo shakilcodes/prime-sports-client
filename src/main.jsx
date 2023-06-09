@@ -33,6 +33,8 @@ import ManageClasses from './Copmponents/Deshboard/ManageClasses/ManageClasses'
 import Payment from './Copmponents/Deshboard/Payment/Payment'
 import MyEnrolled from './Copmponents/Deshboard/MyEnrolled/MyEnrolled'
 import UpdateClass from './Copmponents/Deshboard/UpdateClass/UpdateClass'
+import FeedBack from './Copmponents/Deshboard/FeedBack/FeedBack'
+import FeedBackInstructor from './Copmponents/Deshboard/FeedBackInstructor/FeedBackInstructor'
 
 
 
@@ -101,6 +103,14 @@ const router = createBrowserRouter([
       {
         path: 'updateClass/:id',
         element: <UpdateClass></UpdateClass>
+      },
+      {
+        path: 'feedBack/:id',
+        element: <FeedBack></FeedBack>
+      },
+      {
+        path: 'InstructorfeedBack/:id',
+        element: <FeedBackInstructor></FeedBackInstructor>
       }
     ]
 

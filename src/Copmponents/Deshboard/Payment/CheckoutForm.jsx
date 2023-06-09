@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useCart from '../../Hooks/useCart';
 import './Payment.css'
@@ -110,7 +111,15 @@ const CheckoutForm = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-
+                    Swal.fire({
+                        title: 'Pyment successfully done',
+                        showClass: {
+                          popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                          popup: 'animate__animated animate__fadeOutUp'
+                        }
+                      })
 
                 })
 

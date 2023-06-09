@@ -1,23 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useCart from '../../Hooks/useCart';
 
 const MySelected = () => {
     const [data, refetch] = useCart()
     const filterd = data.filter(d => d.status == 'unpaid')
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/carts/${id}`, {
-            method: 'DELETE',
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/carts/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                              )
+                        }
+
+
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    refetch()
-                    // alert('deleted successfully')
-                }
 
-
-            })
     }
     return (
         <div className='w-full'>
