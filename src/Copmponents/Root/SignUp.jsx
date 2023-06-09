@@ -1,44 +1,36 @@
 import { updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthPorvider/AuthPorvider';
 
 
 const SignUp = () => {
-    // useTitle('SignUp')
     const [error, setError] = useState('')
-
     const { signUp } = useContext(AuthContext)
+
     const navigate = useNavigate()
-    const hanleSignUp = (event) => {
-        event.preventDefault()
-        const form = event.target;
-        const email = form.email.value
-        const password = form.password.value
-        const confirmpassword = form.confirmpassword.value
-        const name = form.name.value
-        const photo = form.photo.value
-        if (password !== confirmpassword) {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        if (data.password !== data.confirmpassword) {
             return alert('password is not match')
         }
-        console.log(password, confirmpassword)
-
-        signUp(email, password).then(result => {
+        console.log(data)
+        signUp(data.email, data.password).then(result => {
             const user = result.user;
 
-            updateName(name, photo, user)
+            updateName(data.name, data.photo, user)
             console.log(user)
             setError("")
-            event.target.reset();
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: 'Sign Up success',
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
             navigate('/')
             // console.log(loggedUser)
         }).catch(error => {
@@ -49,6 +41,7 @@ const SignUp = () => {
 
         })
     }
+
     console.log(error)
     const updateName = (name, photo, user) => {
         updateProfile(user, {
@@ -59,22 +52,22 @@ const SignUp = () => {
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
-                        'content-type' : 'application/json'
+                        'content-type': 'application/json'
                     },
                     body: JSON.stringify(usersInfo)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if(data.insertedId){
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'user Added',
-                            showConfirmButton: false,
-                            timer: 1500
-                          })
-                    }
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'user Added',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
                 console.log(result)
             })
             .catch((error) => {
@@ -85,7 +78,7 @@ const SignUp = () => {
         <div>
             <h1 className='text-7xl mt-5 text-center font-bold '>SignUp Please</h1>
 
-            <form className='mt-5' onSubmit={hanleSignUp}>
+            <form className='mt-5' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="hero">
                     <div className="hero-content w-96 flex-col">
@@ -97,32 +90,45 @@ const SignUp = () => {
                                     <label className="label">
                                         <span className="label-text">Full Name</span>
                                     </label>
-                                    <input type="text" placeholder="name" name='name' className="input input-bordered" />
+                                    <input type="text"  {...register("name")} placeholder="name" name='name' className="input input-bordered" />
+                                    {errors.name && <span className='text-red-500'>Name is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Photo URL</span>
                                     </label>
-                                    <input type="text" placeholder="Photo URL" name='photo' className="input input-bordered" />
+                                    <input type="text" {...register("photo")} placeholder="Photo URL" name='photo' className="input input-bordered" />
+                                    {errors.photo && <span className='text-red-500'>PhotoURL is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name='email' className="input input-bordered" required />
+                                    <input type="text" {...register("email", { required: true })} placeholder="email" name='email' className="input input-bordered" />
+                                    {errors.email && <span className='text-red-500'>Email is required</span>}
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+                                    <input type="password" {...register("password", {
+                                        required: true,
+                                        minLength: 6,
+                                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+                                        
+
+                                    })} placeholder="password" name='password' className="input input-bordered" />
+                                    {errors.password && <span className='text-red-500'>Password is required</span>}
+                                    {errors.password?.type === "minLength" && <p className='text-red-500'>password must be 6 characters</p>}
+                                    {errors.password?.type === "pattern" && <p className='text-red-500'>password must have one Capital later and one special character characters</p>}
 
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='confirmpassword' className="input input-bordered" required />
+                                    <input type="password" {...register("confirmpassword", { required: true })} placeholder="password" name='confirmpassword' className="input input-bordered" />
+                                    {errors.confirmpassword && <span className='text-red-500'>Password match is required</span>}
                                     <label className="label">
                                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                     </label>
