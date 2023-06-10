@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useClasses from '../../Hooks/useClasses';
 
 const FeedBack = () => {
@@ -24,7 +25,13 @@ const FeedBack = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
-                    alert('feedBack added')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'FeedBack sent',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
 
@@ -37,7 +44,7 @@ const FeedBack = () => {
             <form onSubmit={handleFeedback}>
                 <h1 className='text-5xl text-center mb-5'>FeedBack</h1>
                 <textarea className='p-5 rounded-3xl' placeholder='FeedBack' name="text" id="" cols="58" rows="10"></textarea> <br />
-                <button className='w-full text-white'>Submit</button>
+                <button className='w-[600px] text-white'>Submit</button>
             </form>
         </div>
     );

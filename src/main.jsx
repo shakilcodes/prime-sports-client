@@ -36,6 +36,7 @@ import UpdateClass from './Copmponents/Deshboard/UpdateClass/UpdateClass'
 import FeedBack from './Copmponents/Deshboard/FeedBack/FeedBack'
 import FeedBackInstructor from './Copmponents/Deshboard/FeedBackInstructor/FeedBackInstructor'
 import ErrorPage from './Copmponents/ErrorPage/ErrorPage'
+import ErolledHistory from './Copmponents/Deshboard/MyEnrolled/ErolledHistory/ErolledHistory'
 
 
 
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: 'manageClasses',
-        element: <ManageClasses></ManageClasses>,
+        element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>,
         
       },
       {
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
       {
         path: 'InstructorfeedBack/:id',
         element: <FeedBackInstructor></FeedBackInstructor>
+      },
+      {
+        path: 'enrolledHistory',
+        element: <ErolledHistory></ErolledHistory>
       }
     ]
 

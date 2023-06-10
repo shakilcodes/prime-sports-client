@@ -49,7 +49,7 @@ const MyClasses = () => {
                                     <p className=''>{d.status}</p>
                                     
                                 </td>
-                                <td> <p className='text-red-500'> {d.feedBack}</p></td>
+                                <td> <p className='text-red-500 w-[300px]'> {d.feedBack}</p></td>
                                 
                                 <td>
                                     <Link to={`/deshboard/updateClass/${d._id}`} className='btn btn-sm'>Update</Link>

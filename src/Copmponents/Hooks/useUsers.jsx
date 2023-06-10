@@ -7,7 +7,7 @@ const useUsers = () => {
     const token = localStorage.getItem('token')
     const { refetch, data: userMB = [] } = useQuery({
 
-        queryKey: ['classes'],
+        queryKey: ['users'],
         // enabled: !loading,
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users`, {

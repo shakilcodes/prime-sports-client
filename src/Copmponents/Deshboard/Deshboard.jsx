@@ -1,10 +1,30 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthPorvider/AuthPorvider';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
 
 const Deshboard = () => {
-    // TODO
+const {logOut} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const SignOutBtn = () => {
+        navigate('/')
+        logOut().then(result => {
+            console.log(result)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Log Out Success',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              
+
+        }).catch(error => {
+            console.log(error)
+        })
+    }
     const [isAdmin] = useAdmin()
     const admin = isAdmin.admin;
     const [isInstructor] = useInstructor()
@@ -44,6 +64,7 @@ const Deshboard = () => {
                                                 <h1>Students</h1>
                                                 <li><Link to="/deshboard/myselected">My Selected Classes</Link></li>
                                                 <li><Link to='/deshboard/myEnrolled'>My Enrolled Classes</Link></li>
+                                                <li><Link to='/deshboard/enrolledHistory'>Payment History</Link></li>
                                             </div></>
                                     }
                                 </div></>
@@ -54,6 +75,7 @@ const Deshboard = () => {
                             <p><Link to='/'>Home</Link></p>
                             <p className='my-3'> <Link to='/classes'>Classes</Link></p>
                             <p> <Link to='/instructor'>Instructor</Link></p>
+                            <p className='mt-3'><Link onClick={SignOutBtn}>SignOut</Link></p>
                         </div>
 
                     </ul>

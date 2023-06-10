@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import useUsers from '../../Hooks/useUsers';
 
 const AllUsers = () => {
@@ -11,7 +12,13 @@ const AllUsers = () => {
         .then(data => {
             if(data.modifiedCount){
                 refetch()
-                alert('successfully updated admin')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successfully updated Admin role',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         })
     }
@@ -23,7 +30,13 @@ const AllUsers = () => {
         .then(data => {
             if(data.modifiedCount){
                 refetch()
-                alert('successfully updated instructor')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Successfully updated Instructor role',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         })
     }

@@ -1,8 +1,11 @@
 import React from 'react';
 import useClasses from '../../Hooks/useClasses';
+import useUsers from '../../Hooks/useUsers';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Instructors = () => {
     const [data] = useClasses()
+   
     return (
         <div className="overflow-x-auto mx-20">
             <table className="table">

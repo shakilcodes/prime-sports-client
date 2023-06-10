@@ -101,7 +101,7 @@ const AddAClass = () => {
                         </div>
                     </div>
                     <div className='text-center my-3'>
-                        <button className='btn w-full'>Submit</button>
+                        <button className='btn w-full'>submit</button>
                     </div>
                 </form>
             </div>

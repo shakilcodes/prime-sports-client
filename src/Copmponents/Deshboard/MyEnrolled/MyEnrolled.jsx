@@ -21,7 +21,7 @@ const MyEnrolled = () => {
                             <th>Name</th>
                             <th>Price</th>
                             <th>Instructor</th>
-                            <th>Erolled Date</th>
+                            <th>Erolled Email</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -50,7 +50,11 @@ const MyEnrolled = () => {
                                     {t.instructorName}
                                     <br />
                                 </td>
-                                <td>{t.date}</td>
+                                <td>
+                                    {t.email}
+                                    <br />
+                                </td>
+                                
                                 
                             </tr>)
                         }
