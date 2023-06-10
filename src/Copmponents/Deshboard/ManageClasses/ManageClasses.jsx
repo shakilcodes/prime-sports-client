@@ -38,7 +38,7 @@ const ManageClasses = () => {
 
     return (
         <div className='w-full'>
-            <h1 className='text-3xl font-bold my-7'>Total Classes: {data?.length}</h1>
+            <h1 className='text-3xl font-bold my-7 text-center'>Total Classes: {data?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

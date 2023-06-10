@@ -41,7 +41,7 @@ const MySelected = () => {
     }
     return (
         <div className='w-full'>
-            <h1 className='text-3xl font-bold my-7'>My Selected: {filterd.length}</h1>
+            <h1 className='text-3xl font-bold my-7 text-center'>My Selected Classes: {filterd.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

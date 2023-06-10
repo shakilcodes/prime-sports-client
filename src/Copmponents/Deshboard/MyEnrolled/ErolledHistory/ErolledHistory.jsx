@@ -6,7 +6,7 @@ const ErolledHistory = () => {
 console.log(data)
     return (
         <div className='w-full'>
-        <h1 className='text-3xl font-bold my-7'>Payment Hisoty: {data.length}</h1>
+        <h1 className='text-3xl font-bold my-7 text-center'>Payment History: {data.length}</h1>
        <div>
            <table className="table">
                {/* head */}

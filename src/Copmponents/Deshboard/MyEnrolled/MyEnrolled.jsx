@@ -11,8 +11,8 @@ const MyEnrolled = () => {
     console.log(datas)
     return (
         <div className='w-full'>
-             <h1 className='text-3xl font-bold my-7'>My Erolled: {datas.length}</h1>
-            <div>
+             <h1 className='text-3xl font-bold my-7 text-center'>My Erolled Classes: {datas.length}</h1>
+            <div> 
                 <table className="table">
                     {/* head */}
                     <thead>
