@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthPorvider/AuthPorvider";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const imgeAPI = import.meta.env.VITE_IMAGE_API;
 const AddAClass = () => {
@@ -44,9 +45,15 @@ const AddAClass = () => {
         .then(data => {
             console.log(data._id)
             if(data.insertedId){
-               alert ('successfully added new a class')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'You Successfully added a Class',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
-            navigate('/')
+            navigate('/deshboard/myclasses')
         })
         })
         .catch(err => {
@@ -63,7 +70,7 @@ const AddAClass = () => {
     return (
         <div className='w-full'>
             <div className=''>
-                <h1 className='my-10 font-bold text-4xl text-center'>Update</h1>
+                <h1 className='my-10 font-bold text-4xl text-center'>Add a Class</h1>
                 <form onSubmit={handleSubmit}>
                     <div className=''>
                         <div className='flex'>

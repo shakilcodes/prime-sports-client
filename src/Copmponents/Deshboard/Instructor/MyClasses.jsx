@@ -34,6 +34,8 @@ const MyClasses = () => {
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Status</th>
+                            <th>FeedBack</th>
 
                         </tr>
                     </thead>
@@ -43,11 +45,12 @@ const MyClasses = () => {
                                 <th>{index + 1}</th>
                                 <td>{d.title}</td>
                                 <td>{d.email}</td>
-                                <td> <p className=''> Students: 0</p></td>
                                 <td>
                                     <p className=''>{d.status}</p>
-                                    <Link to={`/deshboard/InstructorfeedBack/${d._id}`}><p className='text-red-500'>{d.feedBack ? 'FeedBack' : ''}</p></Link>
+                                    
                                 </td>
+                                <td> <p className='text-red-500'> {d.feedBack}</p></td>
+                                
                                 <td>
                                     <Link to={`/deshboard/updateClass/${d._id}`} className='btn btn-sm'>Update</Link>
                                 </td>

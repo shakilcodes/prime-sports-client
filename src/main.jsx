@@ -35,6 +35,7 @@ import MyEnrolled from './Copmponents/Deshboard/MyEnrolled/MyEnrolled'
 import UpdateClass from './Copmponents/Deshboard/UpdateClass/UpdateClass'
 import FeedBack from './Copmponents/Deshboard/FeedBack/FeedBack'
 import FeedBackInstructor from './Copmponents/Deshboard/FeedBackInstructor/FeedBackInstructor'
+import ErrorPage from './Copmponents/ErrorPage/ErrorPage'
 
 
 
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',

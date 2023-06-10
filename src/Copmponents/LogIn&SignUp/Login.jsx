@@ -1,7 +1,10 @@
+import { data } from 'autoprefixer';
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaGoogle } from 'react-icons/fa';
+import { AiFillEyeInvisible } from "react-icons/ai";
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../AuthPorvider/AuthPorvider';
@@ -49,7 +52,6 @@ const Login = () => {
     const onSubmit = data => {
         // console.log(data);
         logIn(data.email, data.password)
-
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
@@ -61,6 +63,7 @@ const Login = () => {
                     timer: 1500
                 })
                 navigate(from, { replace: true })
+                
                 //    setPassword('')
                 // event.target.reset();
 
@@ -73,13 +76,17 @@ const Login = () => {
 
             })
     }
-
+    const [isTrue, setIstrue] = useState(true)
+    const visibleHandle = () => {
+        setIstrue(!isTrue)
+    }
+    
 
     return (
         <div>
             <h1 className='text-7xl text-center mt-10  font-bold'>Please Login</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className='mb-2' onSubmit={handleSubmit(onSubmit)}>
                 <div className="hero ">
                     <div className="hero-content w-96 flex-col">
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
@@ -98,7 +105,20 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" />
+                                    <div className='relative'>
+                                        {
+                                            isTrue ?
+                                                <>
+                                                    <input type="password" {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" />
+                                                </> :
+                                                <>
+                                                    <input type="text" {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" />
+                                                </>
+                                        }
+                                    </div>
+                                    <div className='absolute left-[320px] bottom-[250px]'>
+                                    <h1 onClick={visibleHandle} className='cursorPoint text-sm text-xl'> <AiFillEyeInvisible></AiFillEyeInvisible></h1>
+                                    </div>
                                     {errors.password && <span className='text-red-500'>Password is required</span>}
                                     <label className="label">
                                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -117,7 +137,7 @@ const Login = () => {
             </form>
             <div className=''>
                 <div className='text-center  text-white font-bold'>
-                    <button onClick={googleLogIn} className='mx-auto text-white btn bg-primary px-10 rounded-md'>Login with Google</button>
+                    <button onClick={googleLogIn} className='mx-auto text-white btn bg-primary px-10 rounded-md'> <FaGoogle></FaGoogle> Google</button>
                 </div>
 
             </div>
