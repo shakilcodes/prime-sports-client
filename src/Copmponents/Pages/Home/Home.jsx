@@ -11,7 +11,7 @@ const Home = () => {
             <Slider></Slider>
             <PopularClass></PopularClass>
             <PopularInstructors></PopularInstructors>
-            <ExtraSection></ExtraSection>
+            <ExtraSection></ExtraSection>      
             <Footer></Footer>
         </div>
     );

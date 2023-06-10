@@ -37,6 +37,7 @@ import FeedBack from './Copmponents/Deshboard/FeedBack/FeedBack'
 import FeedBackInstructor from './Copmponents/Deshboard/FeedBackInstructor/FeedBackInstructor'
 import ErrorPage from './Copmponents/ErrorPage/ErrorPage'
 import ErolledHistory from './Copmponents/Deshboard/MyEnrolled/ErolledHistory/ErolledHistory'
+import InstructorRoute from './Copmponents/InstructorRoute'
 
 
 
@@ -75,7 +76,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/deshboard/myselected',
-        element: <MySelected></MySelected>
+        element: <PrivetRoute><MySelected></MySelected></PrivetRoute>
       },
       {
         path: 'allUsers',
@@ -83,11 +84,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'addAClass',
-        element: <AddAClass></AddAClass>
+        element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
       },
       {
         path: 'myclasses',
-        element: <MyClasses></MyClasses>
+        element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
       }, 
       {
         path: 'manageClasses',
@@ -96,29 +97,30 @@ const router = createBrowserRouter([
       },
       {
         path: 'payment/:id',
-        element: <Payment></Payment>
+        element:<PrivetRoute> <Payment></Payment></PrivetRoute>
       },
       {
         path: 'myEnrolled',
-        element: <MyEnrolled></MyEnrolled>,
+        element: <PrivetRoute><MyEnrolled></MyEnrolled></PrivetRoute>,
       
       },
       {
         path: 'updateClass/:id',
-        element: <UpdateClass></UpdateClass>
+        element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>
       },
       {
         path: 'feedBack/:id',
-        element: <FeedBack></FeedBack>
+        element: <AdminRoute><FeedBack></FeedBack></AdminRoute>
       },
       {
         path: 'InstructorfeedBack/:id',
-        element: <FeedBackInstructor></FeedBackInstructor>
+        element: <InstructorRoute><FeedBackInstructor></FeedBackInstructor></InstructorRoute>
       },
       {
         path: 'enrolledHistory',
-        element: <ErolledHistory></ErolledHistory>
-      }
+        element: <PrivetRoute><ErolledHistory></ErolledHistory></PrivetRoute>
+      },
+      
     ]
 
   }

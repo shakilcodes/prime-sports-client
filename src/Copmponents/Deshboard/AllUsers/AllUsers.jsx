@@ -61,8 +61,8 @@ const AllUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{d.name}</td>
                                 <td>{d.email}</td>
-                                <td>{d.role === 'instructor' ? 'Instructor' : <button onClick={()=> makeInstructor(d)} className='btn btn-sm'>Make Instructor</button>}</td>
-                                <td>{d.role === 'admin' ? 'admin' : <button onClick={()=> makeAdmin(d)} className='btn btn-sm'>Make amdin</button>}</td>
+                                <td>{d.role === 'instructor' ? 'Instructor' : <button onClick={()=> makeInstructor(d)} className='btn btn-primary'>Make Instructor</button>}</td>
+                                <td>{d.role === 'admin' ? 'admin' : <button onClick={()=> makeAdmin(d)} className='btn btn-primary'>Make amdin</button>}</td>
                             </tr>)
                         }
 
