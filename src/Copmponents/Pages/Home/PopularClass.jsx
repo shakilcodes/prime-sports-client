@@ -1,5 +1,8 @@
 import React from 'react';
 import useClasses from '../../Hooks/useClasses';
+import { motion } from 'framer-motion';
+
+
 
 const PopularClass = () => {
     const [data] = useClasses()
@@ -12,7 +15,14 @@ const PopularClass = () => {
             <div className='md:grid grid-cols-3 gap-7 justify-items-center'>
                 {
                     popular.map(d => <div key={d._id} className="card md:w-96 bg-base-100 shadow-xl">
-                        <figure><img className='w-[400px] h-[350px]' src={d.image} /></figure>
+                        <motion.div
+                            initial={{ opacity: 0, y: -50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.8 }}
+                        >
+                            <figure><img className='w-[400px] h-[350px] rounded-3xl' src={d.image} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{d.title}</h2>
                             <p>Instructor: {d.instructorName}</p>
@@ -20,6 +30,7 @@ const PopularClass = () => {
 
 
                         </div>
+                        </motion.div>
                     </div>)
                 }
             </div>
@@ -28,3 +39,4 @@ const PopularClass = () => {
 };
 
 export default PopularClass;
+

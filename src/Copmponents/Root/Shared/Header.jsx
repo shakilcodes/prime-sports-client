@@ -106,6 +106,7 @@ const Header = () => {
                                     user ? <button onClick={SignOutBtn} className='btn'>LogOut</button> : <Link className='btn' to='/login'>LogIn</Link>
                                 }
                             </div>
+                            
                         </div>
                     </div>
                 </nav>
