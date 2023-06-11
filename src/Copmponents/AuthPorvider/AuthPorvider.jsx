@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
             console.log(usergot)
 
             if(usergot){
-                axios.post(`http://localhost:5000/jwt`, {email: usergot.email})
+                axios.post(`https://prime-sports-server.vercel.app/jwt`, {email: usergot.email})
                 .then(data => {
                     localStorage.setItem('token', data.data.token)
                     setLoading(false)

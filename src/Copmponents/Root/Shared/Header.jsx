@@ -9,7 +9,6 @@ import useInstructor from '../../Hooks/useInstructor';
 const Header = () => {
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
-    console.log(isInstructor.admin)
     const { user, logOut } = useContext(AuthContext)
     const SignOutBtn = () => {
         logOut().then(result => {

@@ -26,7 +26,7 @@ const Home = () => {
     return (
         <>
             <div className='relative '>
-            <button className='absolute z-30' onClick={toggleMode}>Toggle Mode</button>
+                <button className='absolute text-white bg-orange-700 z-30' onClick={toggleMode}>Toggle Mode</button>
             </div>
             <div className="content"></div>
             <div>

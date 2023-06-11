@@ -18,7 +18,7 @@ const ManageClasses = () => {
     console.log(data)
 
     const handleApprove = user => {
-        fetch(`http://localhost:5000/approve/admin/${user._id}`, {
+        fetch(`https://prime-sports-server.vercel.app/approve/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

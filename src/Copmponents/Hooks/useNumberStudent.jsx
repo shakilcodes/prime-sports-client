@@ -9,7 +9,7 @@ const useNumberStuden = () => {
         queryKey: ['payments'],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/payments`,{headers: {
+            const res = await fetch(`https://prime-sports-server.vercel.app/payments`,{headers: {
                 authorization: `bearer ${token}`
             }})
             return res.json();

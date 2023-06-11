@@ -63,7 +63,7 @@ const SignUp = () => {
 
                 const saveUser = { name: user.displayName, email: user.email }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://prime-sports-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -88,7 +88,7 @@ const SignUp = () => {
         })
             .then((result) => {
                 const usersInfo = { name, email: user.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://prime-sports-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

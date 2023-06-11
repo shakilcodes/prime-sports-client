@@ -9,7 +9,7 @@ const useInstructor = () => {
         queryKey: ['instructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`,{headers: {
+            const res = await fetch(`https://prime-sports-server.vercel.app/users/instructor/${user?.email}`,{headers: {
                 authorization: `bearer ${token}`
             }})
             return res.json();

@@ -12,7 +12,7 @@ const Payment = () => {
     
     return (
         <div>
-            <h1 className='text-4xl'>taka o taka re tui oporadi re</h1>
+            <h1 className='text-4xl font-bold text-center'>Payment</h1>
             <Elements stripe={stripePromise}>
                 <CheckoutForm></CheckoutForm>
             </Elements>

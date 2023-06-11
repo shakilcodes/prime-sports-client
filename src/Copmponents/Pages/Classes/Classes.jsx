@@ -6,19 +6,18 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useAdmin from '../../Hooks/useAdmin';
 import useClasses from '../../Hooks/useClasses';
+import useInstructor from '../../Hooks/useInstructor';
 import useUsers from '../../Hooks/useUsers';
 const Classes = () => {
   const [data] = useClasses()
   const navigate = useNavigate()
   const { user, loading } = useContext(AuthContext)
+  const [isAdmin] = useAdmin()
+  const [isInstructor] = useInstructor()
+  console.log(isInstructor.admin)
  
-  const [userMB] = useUsers()
-  console.log(userMB)
-  // const findUser = user?.find(d => )
-  // const findUser = userMB?.find(d => d?.email == user?.email);
 
  
-console.log(user?.email)
 
   const approvedClasses = data.filter(d => d.status === 'Approved')
   const handleCart = item => {
@@ -26,7 +25,7 @@ console.log(user?.email)
     const status = "unpaid"
     const addToCart = { title, AvailableSeats, price, instructorName, email, image: imageFromBB, userEmail: user?.email, userName: user?.displayName, status }
 
-    fetch('http://localhost:5000/carts', {
+    fetch('https://prime-sports-server.vercel.app/carts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -79,7 +78,7 @@ console.log(user?.email)
               <p>Availabel Seat: {i.AvailableSeats}</p>
               <p>Price: {i.price}</p>
               <div className="card-actions justify-end">
-                <button disabled={!i?.AvailableSeats} onClick={() => handleCart(i)} className="btn btn-primary ">Select</button>
+                <button disabled={!i?.AvailableSeats || isAdmin.admin == true || isInstructor.admin == true} onClick={() => handleCart(i)} className="btn btn-primary ">Select</button>
               </div>
             </div>
           </div>)

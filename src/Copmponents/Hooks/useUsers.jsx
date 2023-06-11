@@ -10,7 +10,7 @@ const useUsers = () => {
         queryKey: ['users'],
         // enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users`, {
+            const res = await fetch(`https://prime-sports-server.vercel.app/users`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }

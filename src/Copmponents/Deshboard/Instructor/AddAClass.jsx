@@ -34,7 +34,7 @@ const AddAClass = () => {
             const imageFromBB = imageData.data.display_url;
            const {title, AvailableSeats, price, instructorName, email, status} = inputValues;
            const newInputValue = {title, AvailableSeats, price, instructorName, email, status, image: imageFromBB}
-            fetch('http://localhost:5000/addAClass',{
+            fetch('https://prime-sports-server.vercel.app/addAClass',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

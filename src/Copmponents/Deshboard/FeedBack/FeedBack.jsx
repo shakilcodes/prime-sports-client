@@ -13,7 +13,7 @@ const FeedBack = () => {
         const feedBack = event.target.text.value;
         const status = 'denied'
         const update = {feedBack, status}
-        fetch(`http://localhost:5000/feedBack/${id}`, {
+        fetch(`https://prime-sports-server.vercel.app/feedBack/${id}`, {
             method: "PUT",
             headers: {
                 'Accept': 'application/json',

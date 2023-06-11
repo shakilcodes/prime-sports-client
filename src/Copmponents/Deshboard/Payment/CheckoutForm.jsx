@@ -20,17 +20,10 @@ const CheckoutForm = () => {
     
     const [clientSecret, setClientSecret] = useState("");
     const [succeeded, setSuccseeded] = useState('')
-//     const [cartData, setCartData] = useState([])
 
-//    useEffect(()=>{
-//     fetch(`http://localhost:5000/carts/${user?.email}`)
-//     .then(res => res.json())
-//     .then(datas => setCartData(datas))
-//    },[])
 
     useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://prime-sports-server.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -101,7 +94,7 @@ const CheckoutForm = () => {
                 date: new Date(),
                 status: 'succeeded'
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://prime-sports-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -123,9 +116,8 @@ const CheckoutForm = () => {
 
                 })
 
-            const shaki = 'shakil'
 
-            fetch(`http://localhost:5000/carts/updateSuccess/${findedOne._id}`, {
+            fetch(`https://prime-sports-server.vercel.app/carts/updateSuccess/${findedOne._id}`, {
                 method: 'PATCH'
             })
                 .then(res => res.json())

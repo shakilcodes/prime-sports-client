@@ -9,7 +9,7 @@ const useManageClasses = () => {
         queryKey: ['classes'],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classesInstructor`, {
+            const res = await fetch(`https://prime-sports-server.vercel.app/classesInstructor`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }

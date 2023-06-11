@@ -5,7 +5,7 @@ import useUsers from '../../Hooks/useUsers';
 const AllUsers = () => {
     const [data, refetch] = useUsers()
     const makeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://prime-sports-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -23,7 +23,7 @@ const AllUsers = () => {
         })
     }
     const makeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://prime-sports-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
