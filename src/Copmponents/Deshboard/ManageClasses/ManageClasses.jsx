@@ -49,7 +49,7 @@ const ManageClasses = () => {
                             <th>Name</th>
                             <th>Instructor</th>
                             <th>Email</th>
-                            <th>AvailableSeats</th>
+                            <th>Seats</th>
                             <th>Price</th>
                             <th>Status</th>
                             <th></th>
@@ -64,8 +64,8 @@ const ManageClasses = () => {
                                         <img src={d.image} alt="Avatar Tailwind CSS Component" />
                                     </div>
                                 </div>
-                                <td>{d.title}</td>
-                                <td>{d.instructorName}</td>
+                                <td className=''>{d.title}</td>
+                                <td className=''>{d.instructorName}</td>
                                 <td>{d.email}</td>
                                 <td>{d.AvailableSeats}</td>
                                 <td>{d.price}</td>
