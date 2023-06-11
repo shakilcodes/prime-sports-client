@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 const imgeAPI = import.meta.env.VITE_IMAGE_API;
@@ -51,7 +52,13 @@ const UpdateClass = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('updated your class')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You Successfully added a Class',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
             })
         form.reset()
