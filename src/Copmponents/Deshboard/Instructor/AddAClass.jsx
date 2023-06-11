@@ -43,7 +43,6 @@ const AddAClass = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data._id)
             if(data.insertedId){
                 Swal.fire({
                     position: 'top-end',
@@ -57,7 +56,6 @@ const AddAClass = () => {
         })
         })
         .catch(err => {
-            console.log(err)
         })
         
         

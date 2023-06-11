@@ -46,7 +46,6 @@ const CheckoutForm = () => {
         if (card === null) {
             return
         }
-        // console.log(card)
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
@@ -55,10 +54,8 @@ const CheckoutForm = () => {
 
         if (error) {
             setCardError(error.message);
-            console.log('error', error)
         }
         else {
-            console.log('payment method', paymentMethod)
             setCardError('')
         }
 
@@ -76,9 +73,7 @@ const CheckoutForm = () => {
             }
         );
         if (confirmError) {
-            console.log(confirmError)
         }
-        console.log('payment intent', paymentIntent)
         if (paymentIntent.status === 'succeeded') {
             const transactionsId = paymentIntent.id;
             setSuccseeded(transactionsId)
@@ -103,7 +98,6 @@ const CheckoutForm = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     Swal.fire({
                         title: 'Pyment successfully done',
                         showClass: {

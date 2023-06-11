@@ -12,8 +12,6 @@ const PrivetRoute = ({children}) => {
     
         </p>
     }
-    
-    // console.log(user)
         if(user){
             return children;
         }

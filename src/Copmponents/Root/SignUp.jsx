@@ -23,12 +23,10 @@ const SignUp = () => {
         if (data.password !== data.confirmpassword) {
             return alert('password is not match')
         }
-        console.log(data)
         signUp(data.email, data.password).then(result => {
             const user = result.user;
 
             updateName(data.name, data.photo, user)
-            console.log(user)
             setError("")
             Swal.fire({
                 position: 'top-end',
@@ -38,10 +36,8 @@ const SignUp = () => {
                 timer: 1500
             })
             navigate('/')
-            // console.log(loggedUser)
         }).catch(error => {
             setError(error.message)
-            console.log(error.message)
             const gotedError = error.message;
             setError(gotedError)
 
@@ -81,7 +77,6 @@ const SignUp = () => {
             )
     }
 
-    console.log(error)
     const updateName = (name, photo, user) => {
         updateProfile(user, {
             displayName: name, photoURL: photo
@@ -107,10 +102,8 @@ const SignUp = () => {
                             })
                         }
                     })
-                console.log(result)
             })
             .catch((error) => {
-                console.log(error)
             })
     }
     return (

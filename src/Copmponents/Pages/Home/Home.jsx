@@ -8,6 +8,7 @@ import PopularClass from './PopularClass';
 import PopularInstructors from './PopularInstructors';
 import Slider from './Slider';
 import './Home.css'
+import { FaToggleOn } from 'react-icons/fa';
 
 const Home = () => {
 
@@ -24,9 +25,9 @@ const Home = () => {
     };
 
     return (
-        <>
+        <div className=''>
             <div className='relative '>
-                <button className='absolute text-white bg-orange-700 z-30' onClick={toggleMode}>Toggle Mode</button>
+                <button className='absolute text-white z-10' onClick={toggleMode}><FaToggleOn className='md:text-3xl text-xl'></FaToggleOn></button>
             </div>
             <div className="content"></div>
             <div>
@@ -35,16 +36,20 @@ const Home = () => {
                 <div className="content">
                     {isDarkMode ? (
                         <p><Slider></Slider>
-                            <PopularClass></PopularClass>
-                            <PopularInstructors></PopularInstructors>
-                            <ExtraSection></ExtraSection>
+                            <div className='md:max-w-[1280px] mx-auto'>
+                                <PopularClass></PopularClass>
+                                <PopularInstructors></PopularInstructors>
+                                <ExtraSection></ExtraSection>
+                            </div>
                             <Footer></Footer>
                         </p>
                     ) : (
                         <p><Slider></Slider>
-                            <PopularClass></PopularClass>
-                            <PopularInstructors></PopularInstructors>
-                            <ExtraSection></ExtraSection>
+                            <div className='md:max-w-[1280px] mx-auto'>
+                                <PopularClass></PopularClass>
+                                <PopularInstructors></PopularInstructors>
+                                <ExtraSection></ExtraSection>
+                            </div>
                             <Footer></Footer>
                         </p>
                     )}
@@ -53,7 +58,7 @@ const Home = () => {
 
 
             </div>
-        </>
+        </div>
     );
 };
 

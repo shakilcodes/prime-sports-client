@@ -1,0 +1,20 @@
+.Academy{
+    display: block;
+}
+.navmiddle{
+    display: block;
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .Academy{
+        display: none;
+        
+    }
+    .navmiddle{
+        display: none;
+    }
+    .titlePrime{
+        font-size: 25px;
+    }
+  }

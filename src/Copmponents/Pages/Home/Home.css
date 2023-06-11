@@ -5,8 +5,8 @@
   }
   
   .dark-mode {
-    background-color: #333;
-    color: #fff;
+    background-color: rgb(96, 95, 95);
+    color: rgb(0, 0, 0);
   }
   
   .content {
@@ -14,7 +14,7 @@
   }
   
   .dark-mode .content {
-    color: #fff;
+    color: rgb(0, 0, 0);
   }
   
 

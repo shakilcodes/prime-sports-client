@@ -14,7 +14,6 @@ const Classes = () => {
   const { user, loading } = useContext(AuthContext)
   const [isAdmin] = useAdmin()
   const [isInstructor] = useInstructor()
-  console.log(isInstructor.admin)
  
 
  
@@ -47,7 +46,6 @@ const Classes = () => {
 
 
         }
-        console.log(data._id)
         if (data.insertedId) {
           Swal.fire({
             position: 'top-end',
@@ -61,7 +59,6 @@ const Classes = () => {
       })
 
       .catch(err => {
-        console.log(err)
       })
   }
 

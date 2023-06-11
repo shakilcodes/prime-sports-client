@@ -10,11 +10,11 @@ const PopularClass = () => {
     const popular = slice ? data.slice(0, 6) : data;
 
     return (
-        <div className='md:mx-32 md:mt-20'>
+        <div className=' md:mt-20'>
             <h1 className='md:text-5xl text-2xl text-center my-10 font-bold'>Popular Classes</h1>
             <div className='md:grid grid-cols-3 gap-7 justify-items-center'>
                 {
-                    popular.map(d => <div key={d._id} className="card md:w-96 bg-base-100 shadow-xl">
+                    popular.map(d => <div key={d._id} className="card md:w-[400px] bg-base-100 shadow-xl mb-5">
                         <motion.div
                             initial={{ opacity: 0, y: -50 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ const PopularClass = () => {
                             whileHover={{ scale: 1.2 }}
                             whileTap={{ scale: 0.8 }}
                         >
-                            <figure><img className='w-[400px] h-[350px] rounded-3xl' src={d.image} /></figure>
+                            <figure><img className='w-[350px] h-[300px] rounded-3xl pt-3' src={d.image} /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{d.title}</h2>
                             <p>Instructor: {d.instructorName}</p>

@@ -4,7 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../AuthPorvider/AuthPorvider';
 import useSingleInstuctor from '../../Hooks/useSingleInstructor';
 const imgeAPI = import.meta.env.VITE_IMAGE_API;
-console.log(imgeAPI)
 const UpdateClass = () => {
     const {user, loading} = useContext(AuthContext)
     if (loading) {
@@ -30,7 +29,6 @@ const UpdateClass = () => {
         const status = 'pending'
         
         const inputValues = { title, AvailableSeats, price, instructorName, email }
-        console.log(inputValues)
 
         const imgHostingULR = `https://api.imgbb.com/1/upload?key=${imgeAPI}`
         const formData = new FormData()
@@ -52,7 +50,6 @@ const UpdateClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount > 0) {
                     alert('updated your class')
                 }
@@ -62,7 +59,6 @@ const UpdateClass = () => {
        
         })
         .catch(err => {
-            console.log(err)
         })
 
 

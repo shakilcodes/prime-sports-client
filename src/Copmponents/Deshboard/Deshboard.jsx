@@ -16,7 +16,6 @@ const Deshboard = () => {
     const SignOutBtn = () => {
         navigate('/')
         logOut().then(result => {
-            console.log(result)
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -27,7 +26,6 @@ const Deshboard = () => {
 
 
         }).catch(error => {
-            console.log(error)
         })
     }
     const [isAdmin] = useAdmin()

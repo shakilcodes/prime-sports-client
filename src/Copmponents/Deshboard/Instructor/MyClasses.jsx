@@ -11,16 +11,12 @@ const MyClasses = () => {
     const [totalData, setTotalData] = useState([])
     const [allClass] = useClasses()
     const allDAta = allClass.map(d => d.title)
-    console.log(allClass)
     
     const [students] = useNumberStuden()
-    // console.log(students)
     for(const s of allClass){
         const student = students.filter(d => d.title == s.title)
-        // const stu = student.map(d => console.log(d))
         const a = student[0]
         const b = student[1]
-        console.log(b)
     }
     
     return (
@@ -28,7 +24,6 @@ const MyClasses = () => {
             <h1 className='text-3xl font-bold my-7 text-center'>Total Classes Added by Me: {data.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th>#</th>

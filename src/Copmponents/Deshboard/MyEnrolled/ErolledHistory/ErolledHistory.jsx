@@ -3,13 +3,11 @@ import useMyErolled from '../../../Hooks/useMyErolled';
 
 const ErolledHistory = () => {
     const [data] = useMyErolled()
-console.log(data)
     return (
         <div className='w-full'>
         <h1 className='text-3xl font-bold my-7 text-center'>Payment History: {data.length}</h1>
        <div>
            <table className="table">
-               {/* head */}
                <thead>
                    <tr>
                        <th>#</th>

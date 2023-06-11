@@ -7,7 +7,6 @@ const FeedBack = () => {
     const { id } = useParams()
     const [allClass] = useClasses()
     const findedData = allClass.find(d => d._id == id)
-    console.log(findedData)
     const handleFeedback = event => {
         event.preventDefault()
         const feedBack = event.target.text.value;
@@ -23,7 +22,6 @@ const FeedBack = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         position: 'top-end',

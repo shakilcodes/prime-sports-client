@@ -8,7 +8,6 @@ import useMyErolled from '../../Hooks/useMyErolled';
 const MyEnrolled = () => {
     const [data] = useMyErolled()
     const datas = data;
-    console.log(datas)
     return (
         <div className='w-full'>
              <h1 className='text-3xl font-bold my-7 text-center'>My Erolled Classes: {datas.length}</h1>

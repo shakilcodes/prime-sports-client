@@ -8,14 +8,11 @@ import useManageClasses from '../../Hooks/useManageClass';
 import useUsers from '../../Hooks/useUsers';
 
 const ManageClasses = () => {
-    // const data = useLoaderData()
     const { loading } = useContext(AuthContext)
     if (loading) {
         return 'loadiing'
     }
     const [data, refetch] = useManageClasses()
-    // const [allClass] = useClasses()
-    console.log(data)
 
     const handleApprove = user => {
         fetch(`https://prime-sports-server.vercel.app/approve/admin/${user._id}`, {

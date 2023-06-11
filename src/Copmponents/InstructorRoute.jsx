@@ -15,7 +15,6 @@ const InstructorRoute = ({children}) => {
         return <p className='text-7xl text-center font-bold mt-32'><progress className="progress w-56"></progress></p>
     }
     
-    // console.log(user)
         if(user && instructor){
             return children;
         }

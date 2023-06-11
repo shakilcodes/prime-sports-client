@@ -50,11 +50,9 @@ const Login = () => {
     }
 
     const onSubmit = data => {
-        // console.log(data);
         logIn(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -64,14 +62,11 @@ const Login = () => {
                 })
                 navigate(from, { replace: true })
                 
-                //    setPassword('')
-                // event.target.reset();
+              
 
             })
             .catch(error => {
                 const errorFind = error.message;
-                // setPassword(error.message)
-                console.log(error.message)
                 setError(errorFind)
 
             })

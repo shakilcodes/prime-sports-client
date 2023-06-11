@@ -40,7 +40,6 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth, usergot =>{
             setUser(usergot)
-            console.log(usergot)
 
             if(usergot){
                 axios.post(`https://prime-sports-server.vercel.app/jwt`, {email: usergot.email})
