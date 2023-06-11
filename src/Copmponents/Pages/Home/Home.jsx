@@ -41,7 +41,6 @@ const Home = () => {
                                 <PopularInstructors></PopularInstructors>
                                 <ExtraSection></ExtraSection>
                             </div>
-                            <Footer></Footer>
                         </p>
                     ) : (
                         <p><Slider></Slider>
@@ -50,7 +49,6 @@ const Home = () => {
                                 <PopularInstructors></PopularInstructors>
                                 <ExtraSection></ExtraSection>
                             </div>
-                            <Footer></Footer>
                         </p>
                     )}
                 </div>

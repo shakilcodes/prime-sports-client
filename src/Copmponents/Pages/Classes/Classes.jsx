@@ -65,7 +65,7 @@ const Classes = () => {
 
   return (
     <div>
-      <div className='mx-20'>
+      <div className='md:max-w-[1280px] m-auto mt-10'>
         {
           approvedClasses.map(i => <div key={i._id} className="card card-side bg-base-100 mb-5 shadow-xl">
             <figure><img className='w-[400px] h-[300px]' src={i.image} alt="Movie" /></figure>

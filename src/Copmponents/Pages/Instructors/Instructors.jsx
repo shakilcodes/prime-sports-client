@@ -7,7 +7,7 @@ const Instructors = () => {
     const [data] = useClasses()
    
     return (
-        <div className="overflow-x-auto mx-20">
+        <div className="overflow-x-auto md:max-w-[1280px] m-auto mt-10">
             <table className="table">
                 {/* head */}
                 <thead>
