@@ -12,7 +12,7 @@ const ExtraSection = () => {
             .then(datas => setachivment(datas))
     }, [])
     return (
-        <div className=' md:mt-20'>
+        <div id='Gallery' className=' md:mt-20'>
             <h1 className='md:text-5xl text-center text-3xl my-5 md:my-10 font-bold'>{achivment.sectionTitle}</h1>
             <div className='md:grid grid-cols-4 gap-7'>
                 {

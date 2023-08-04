@@ -25,7 +25,7 @@ const Header = () => {
         })
     }
     return (
-        <div>
+        <div className='fixed z-10 left-0 right-0 top-0 '>
             <div className='bg-black'>
 
                 <nav className=''>
@@ -57,9 +57,14 @@ const Header = () => {
                         </div>
                         <div className="navbar-center navmiddle  lg:flex gap-3 text-xl font-bold">
                             <Link to='/'>Home</Link>
+                            <a href='#popularCouches'>Best Couches</a>
+                            <a href='#Gallery'>Gallary</a>
                             <Link to='/instructor'>Instructors</Link>
                             <Link to='/classes'>Classes</Link>
-                            <Link to='/signUp'>SignUp</Link>
+                            <Link to='/blog'>Blog</Link>
+                            {
+                                user ? '' : <Link to='/signUp'>SignUp</Link>
+                            }
                             {
                                 user ? <div>
                                     {

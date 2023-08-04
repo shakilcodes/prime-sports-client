@@ -6,9 +6,11 @@ import Header from './Shared/Header';
 const Root = () => {
     return (
         <div>
-           <Header></Header>
-           <Outlet></Outlet>
-           <Footer></Footer>
+            <div className='mb-[99px]'>
+                <Header></Header>
+            </div>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };

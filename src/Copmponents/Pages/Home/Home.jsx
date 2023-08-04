@@ -36,7 +36,7 @@ const Home = () => {
                 <div className="content">
                     {isDarkMode ? (
                         <p><Slider></Slider>
-                            <div className='md:max-w-[1280px] mx-auto'>
+                            <div className='md:max-w-[1280px] mx-auto '>
                                 <PopularClass></PopularClass>
                                 <PopularInstructors></PopularInstructors>
                                 <ExtraSection></ExtraSection>

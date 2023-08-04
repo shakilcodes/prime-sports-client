@@ -12,10 +12,10 @@ import 'react-awesome-slider/dist/styles.css';
 
 const Slider = () => {
     return (
-        <div>
+        <div className=''>
             <AwesomeSlider>
                 <div>
-                    <img src={sliderone} alt="" />
+                    <img className='' src={sliderone} alt="" />
                     <div data-aos="fade-up"
                         data-aos-anchor-placement="top-center" className='absolute -mt-56 md:-mt-[700px] mx-10  text-white text-center'>
                         <h1 className=' text-2xl md:text-7xl font-bold mb-5 text-orange-500'>Unleash Your Cricketing <br /> Potential</h1>

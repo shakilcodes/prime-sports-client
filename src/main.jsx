@@ -38,6 +38,7 @@ import FeedBackInstructor from './Copmponents/Deshboard/FeedBackInstructor/FeedB
 import ErrorPage from './Copmponents/ErrorPage/ErrorPage'
 import ErolledHistory from './Copmponents/Deshboard/MyEnrolled/ErolledHistory/ErolledHistory'
 import InstructorRoute from './Copmponents/InstructorRoute'
+import Blog from './Copmponents/Blog/Blog'
 
 
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: 'classes',
         element: <Classes></Classes>,
+      },
+      {
+        path: 'blog',
+        element: <Blog></Blog>
       }
     ]
   },
