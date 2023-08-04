@@ -9,6 +9,9 @@ import PopularInstructors from './PopularInstructors';
 import Slider from './Slider';
 import './Home.css'
 import { FaToggleOn } from 'react-icons/fa';
+import SportsPress from '../../SportsPress/SportsPress';
+import LookingFruther from '../../LookingFurther/LookingFruther';
+import OurPrinciple from '../../OurPrinciple/OurPrinciple';
 
 const Home = () => {
 
@@ -46,7 +49,10 @@ const Home = () => {
                         <p><Slider></Slider>
                             <div className='md:max-w-[1280px] mx-auto'>
                                 <PopularClass></PopularClass>
+                                <SportsPress></SportsPress>
                                 <PopularInstructors></PopularInstructors>
+                                <LookingFruther></LookingFruther>
+                                <OurPrinciple></OurPrinciple>
                                 <ExtraSection></ExtraSection>
                             </div>
                         </p>
