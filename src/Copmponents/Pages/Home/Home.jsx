@@ -12,6 +12,8 @@ import { FaToggleOn } from 'react-icons/fa';
 import SportsPress from '../../SportsPress/SportsPress';
 import LookingFruther from '../../LookingFurther/LookingFruther';
 import OurPrinciple from '../../OurPrinciple/OurPrinciple';
+import OurSponsor from '../../OurSponsor/OurSponsor';
+import Subscribe from '../../Subscribe/Subscribe';
 
 const Home = () => {
 
@@ -28,7 +30,7 @@ const Home = () => {
     };
 
     return (
-        <div className=''>
+        <div className='fontPrimary'>
             <div className='relative '>
                 <button className='absolute text-white z-10' onClick={toggleMode}><FaToggleOn className='md:text-3xl text-xl'></FaToggleOn></button>
             </div>
@@ -46,16 +48,19 @@ const Home = () => {
                             </div>
                         </p>
                     ) : (
-                        <p><Slider></Slider>
-                            <div className='md:max-w-[1280px] mx-auto'>
+                        <div className='bg-black'>
+                            <Slider></Slider>
+                            <div className='md:max-w-[1280px] mx-auto  '>
                                 <PopularClass></PopularClass>
                                 <SportsPress></SportsPress>
                                 <PopularInstructors></PopularInstructors>
                                 <LookingFruther></LookingFruther>
                                 <OurPrinciple></OurPrinciple>
+                                <OurSponsor></OurSponsor>
                                 <ExtraSection></ExtraSection>
+                                <Subscribe></Subscribe>
                             </div>
-                        </p>
+                        </div>
                     )}
                 </div>
 

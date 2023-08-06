@@ -107,13 +107,13 @@ const SignUp = () => {
             })
     }
     return (
-        <div>
-            <h1 className='text-7xl mt-5 text-center font-bold '>SignUp Please</h1>
+        <div className='bg-black pt-10'>
+            <h1 className='text-7xl mt-5 text-center font-bold text-white mb-20'>Sign Up Please</h1>
 
             <form className='mt-5 mb-0' onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="hero">
-                    <div className="hero-content w-96 flex-col">
+                <div className="hero ">
+                    <div className="hero-content w-96 bg-white rounded-xl flex-col">
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                             <div className="card-body">
                                 <h1 className='text-red-500'>{error}</h1>
@@ -156,8 +156,9 @@ const SignUp = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn bg-primary text-white">SignUp</button>
+                                    <button className="btn bg-[#ffad02]">SignUp</button>
 
+                <button onClick={googleLogIn} className=" btn  bg-[#ffad02]"><FaGoogle className='text-xl'></FaGoogle> Google</button>
                                     <label className="label mt-0">
                                         <a href="/login" className="label-text-alt link link-hover">Already have account? <span className='text-primary'>Login</span></a>
                                     </label>
@@ -168,7 +169,6 @@ const SignUp = () => {
                 </div>
             </form>
             <div className='flex justify-center '>
-                <button onClick={googleLogIn} className=" btn bg-primary text-white"><FaGoogle className='text-xl'></FaGoogle> Google</button>
             </div>
 
 

@@ -7,7 +7,7 @@ import logo from './../../../../../asset/banner/logo.jpeg'
 const Footer = () => {
     return (
         <div className='bg-black text-white'>
-            <div className='footer-main mt-32 footer-main'>
+            <div className='footer-main pt-32 footer-main'>
                 <div className='footer-main md:max-w-[1280px] m-auto'>
                     <div className='footer-container '>
                         <div className='md:flex justify-around gap-12 footer-info md:mx-32 text-center pt-20 pb-10'>

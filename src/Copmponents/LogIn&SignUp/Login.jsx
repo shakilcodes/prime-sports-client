@@ -78,12 +78,12 @@ const Login = () => {
     
 
     return (
-        <div>
-            <h1 className='text-7xl text-center mt-10  font-bold'>Please Login</h1>
+        <div className='bg-black pb-5'>
+            <h1 className='text-7xl text-center mt-10 text-white  font-bold'> Login Please</h1>
 
             <form className='mb-2' onSubmit={handleSubmit(onSubmit)}>
                 <div className="hero ">
-                    <div className="hero-content w-96 flex-col">
+                    <div className="hero-content w-96 bg-white rounded-md flex-col">
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
                             <div className="card-body ">
                                 <h1 className='text-red-500'>{error}</h1>
@@ -112,7 +112,7 @@ const Login = () => {
                                         }
                                     </div>
                                     <div className='absolute left-[320px] bottom-[250px]'>
-                                    <h1 onClick={visibleHandle} className='cursorPoint text-sm text-xl'> <AiFillEyeInvisible></AiFillEyeInvisible></h1>
+                                    <h1 onClick={visibleHandle} className='cursorPoint text-xl'> <AiFillEyeInvisible></AiFillEyeInvisible></h1>
                                     </div>
                                     {errors.password && <span className='text-red-500'>Password is required</span>}
                                     <label className="label">
@@ -120,7 +120,10 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <div className="form-control">
-                                    <button className="btn bg-primary text-white">Login</button>
+                                    <button className="btn bg-[#ffad02] ">Login</button>
+                                    <div className='text-center  text-white font-bold'>
+                    <button onClick={googleLogIn} className='btn bg-[#ffad02] w-full'> <FaGoogle></FaGoogle> Google</button>
+                </div>
                                     <label className="label">
                                         <a href="/signUp" className="label-text-alt link link-hover">First time this website? <span className='text-primary'>SignUp</span></a>
                                     </label>
@@ -130,12 +133,8 @@ const Login = () => {
                     </div>
                 </div>
             </form>
-            <div className=''>
-                <div className='text-center  text-white font-bold'>
-                    <button onClick={googleLogIn} className='mx-auto text-white btn bg-primary px-10 rounded-md'> <FaGoogle></FaGoogle> Google</button>
-                </div>
-
-            </div>
+               
+            
         </div>
 
     );

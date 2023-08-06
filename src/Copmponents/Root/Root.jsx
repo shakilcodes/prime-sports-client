@@ -5,7 +5,7 @@ import Header from './Shared/Header';
 
 const Root = () => {
     return (
-        <div>
+        <div className='fontPrimary'>
             <div className='mb-[99px]'>
                 <Header></Header>
             </div>
